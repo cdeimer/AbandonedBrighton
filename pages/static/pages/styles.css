@@ -1,0 +1,13 @@
+.featured-header {
+    text-align: center; 
+    display: flex;          /* Activate flexbox layout */
+    align-items: center;    /* Vertically center content */
+    justify-content: center; /* Horizontally center content */
+  }
+  
+  .featured-header hr {
+    width: 30%; 
+    margin: 10px;
+    flex-shrink: 0;  /* Prevent shrinking while remaining flexible */
+    color:blue
+  }
