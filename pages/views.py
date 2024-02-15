@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render
 from django.http import Http404, HttpResponse
 from .models import Location
@@ -7,7 +8,8 @@ def index(request):
     featured_pages = featured_pages = Location.objects.order_by('-last_updated')[:8]  # Get recent
     context = {
         'featured_pages': featured_pages,
-        'placeholder_counter': placeholder_page_helper(featured_pages)
+        'placeholder_counter': placeholder_page_helper(featured_pages),
+        'mapbox_token': settings.MAPBOX_ACCESS_TOKEN
     }
     return render(request, 'pages/home_page.html', context)
 
