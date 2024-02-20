@@ -1,4 +1,6 @@
+import json
 from django.conf import settings
+from django.core import serializers
 from django.shortcuts import render
 from django.http import Http404, HttpResponse
 from .models import Location
@@ -6,10 +8,13 @@ from .models import Location
 # Create your views here.
 def index(request):
     featured_pages = featured_pages = Location.objects.order_by('-last_updated')[:8]  # Get recent
+    # Get all locations
+    locations = Location.objects.all()
     context = {
         'featured_pages': featured_pages,
         'placeholder_counter': placeholder_page_helper(featured_pages),
-        'mapbox_token': settings.MAPBOX_ACCESS_TOKEN
+        'mapbox_token': settings.MAPBOX_ACCESS_TOKEN,
+        'locations': serializers.serialize('json', locations)
     }
     return render(request, 'pages/home_page.html', context)
 

@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'mapbox_location_field',
+    'address'
 ]
 
 MIDDLEWARE = [
@@ -127,4 +129,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Dotenv Variables
 load_dotenv(find_dotenv())
-MAPBOX_ACCESS_TOKEN = os.environ['MAPBOX_ACCESS_TOKEN']
+MAPBOX_ACCESS_TOKEN = MAPBOX_KEY = os.environ['MAPBOX_ACCESS_TOKEN']
